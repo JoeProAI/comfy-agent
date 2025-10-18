@@ -1,0 +1,20 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": [
+    "iad1"
+  ],
+  "env": {
+    "OPENAI_API_KEY": "@openai-api-key",
+    "COMFY_CLOUD_KEY": "@comfy-cloud-key",
+    "SMART_MODEL_ROUTER": "true"
+  },
+  "build": {
+    "env": {
+      "OPENAI_API_KEY": "@openai-api-key",
+      "COMFY_CLOUD_KEY": "@comfy-cloud-key"
+    }
+  }
+}

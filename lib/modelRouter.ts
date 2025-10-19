@@ -159,7 +159,7 @@ class SmartModelRouter {
   /**
    * Analyze task characteristics to determine requirements
    */
-  private async analyzeTask(
+  private analyzeTask(
     input: string,
     history: any[],
     preferences?: Partial<TaskAnalysis>
@@ -441,11 +441,11 @@ class SmartModelRouter {
     modelLatency: number,
     target: string
   ): number {
-    const targetLatency = {
+    const targetLatency = ({
       'fast': 1000,
       'balanced': 2500,
       'thorough': 5000
-    }[target];
+    } as Record<string, number>)[target] || 2500; // Default to balanced
     
     if (modelLatency <= targetLatency) {
       return 1.0;

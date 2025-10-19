@@ -317,14 +317,14 @@ export function optimizeWorkflow(workflow: ComfyWorkflow): {
 
   // Remove duplicate loader nodes
   const loaderNodes = Object.entries(optimized.nodes)
-    .filter(([_, node]) => node.class_type.includes('Loader'));
+    .filter(([_, node]: [string, any]) => node.class_type && node.class_type.includes('Loader'));
 
   if (loaderNodes.length > 1) {
     // Group by model/checkpoint
     const loadersByModel = new Map<string, string[]>();
     
-    loaderNodes.forEach(([id, node]) => {
-      const modelName = node.inputs.ckpt_name || node.inputs.model_name || 'default';
+    loaderNodes.forEach(([id, node]: [string, any]) => {
+      const modelName = node.inputs?.ckpt_name || node.inputs?.model_name || 'default';
       if (!loadersByModel.has(modelName)) {
         loadersByModel.set(modelName, []);
       }
